@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LifeOS, una aplicación personal para organizar tu vida." />
+  <title>LifeOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell" data-sidebar-open="false">
+    <aside class="sidebar" id="sidebar" aria-label="Menú principal">
+      <div class="sidebar__brand">
+        <div class="brand-logo" aria-hidden="true">
+          <span class="brand-logo__dot"></span>
+        </div>
+        <div>
+          <p class="brand-eyebrow">Organizador personal</p>
+          <h1>LifeOS</h1>
+        </div>
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Pantallas de LifeOS">
+        <button class="nav-item is-active" type="button" data-page="dashboard" aria-current="page">
+          <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" type="button" data-page="agenda">
+          <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+          <span>Agenda</span>
+        </button>
+        <button class="nav-item" type="button" data-page="facultad">
+          <span class="material-symbols-rounded" aria-hidden="true">school</span>
+          <span>Facultad</span>
+        </button>
+        <button class="nav-item" type="button" data-page="trabajo">
+          <span class="material-symbols-rounded" aria-hidden="true">work</span>
+          <span>Trabajo</span>
+        </button>
+        <button class="nav-item" type="button" data-page="finanzas">
+          <span class="material-symbols-rounded" aria-hidden="true">account_balance_wallet</span>
+          <span>Finanzas</span>
+        </button>
+        <button class="nav-item" type="button" data-page="hogar">
+          <span class="material-symbols-rounded" aria-hidden="true">home</span>
+          <span>Hogar</span>
+        </button>
+        <button class="nav-item" type="button" data-page="proyectos">
+          <span class="material-symbols-rounded" aria-hidden="true">folder_open</span>
+          <span>Proyectos</span>
+        </button>
+        <button class="nav-item" type="button" data-page="notas">
+          <span class="material-symbols-rounded" aria-hidden="true">edit_note</span>
+          <span>Notas</span>
+        </button>
+        <button class="nav-item" type="button" data-page="configuracion">
+          <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+          <span>Configuración</span>
+        </button>
+      </nav>
+    </aside>
+
+    <div class="sidebar-backdrop" data-sidebar-close hidden></div>
+
+    <section class="workspace" aria-label="Área principal">
+      <header class="topbar">
+        <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menú principal">
+          <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+        </button>
+        <div class="topbar__title">
+          <p class="topbar__label">Pantalla actual</p>
+          <h2 id="current-page-title">Dashboard</h2>
+        </div>
+
+        <form class="topbar__search" role="search" aria-label="Buscar y filtrar opciones del menú">
+          <span class="material-symbols-rounded" aria-hidden="true">search</span>
+          <input id="menu-search" type="search" placeholder="Buscar sección..." autocomplete="off" aria-label="Buscar sección del menú" />
+          <button class="filter-chip" type="button" aria-pressed="false" data-filter-toggle>
+            <span class="material-symbols-rounded" aria-hidden="true">tune</span>
+            Filtrar
+          </button>
+        </form>
+
+        <div class="profile-menu">
+          <button class="profile-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
+            <span class="profile-avatar" aria-hidden="true">L</span>
+            <span class="profile-button__text">Mi perfil</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+          <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">lock</span>
+              Privacidad
+            </button>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+              Configuración
+            </button>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content" id="main-content" tabindex="-1">
+        <section class="empty-state" data-active-page="dashboard">
+          <p class="empty-state__kicker">LifeOS</p>
+          <h3>Tu espacio central está listo.</h3>
+          <p>Seleccioná una opción del menú, usá la búsqueda superior o activá el filtro para encontrar rápidamente una pantalla.</p>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>
