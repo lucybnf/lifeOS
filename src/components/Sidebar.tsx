@@ -1,18 +1,29 @@
-import { MaterialIcon } from './MaterialIcon';
-import { type MenuItem } from '../modules/navigation/menuItems';
+import { MaterialIcon } from "./MaterialIcon";
+import { type MenuItem } from "../modules/navigation/menuItems";
+import { AppLink } from "../routes/useAppRouter";
 
 type SidebarProps = {
   activeItemKey: string;
   isCollapsed: boolean;
   items: MenuItem[];
   onClose: () => void;
-  onSelectItem: (item: MenuItem) => void;
   onToggleCollapse: () => void;
 };
 
-export function Sidebar({ activeItemKey, isCollapsed, items, onClose, onSelectItem, onToggleCollapse }: SidebarProps) {
+export function Sidebar({
+  activeItemKey,
+  isCollapsed,
+  items,
+  onClose,
+  onToggleCollapse,
+}: SidebarProps) {
   return (
-    <aside className="sidebar" id="sidebar" aria-label="Menú principal" data-collapsed={isCollapsed}>
+    <aside
+      className="sidebar"
+      id="sidebar"
+      aria-label="Menú principal"
+      data-collapsed={isCollapsed}
+    >
       <div className="sidebar__brand">
         <div className="brand-logo" aria-hidden="true">
           <span className="brand-logo__dot" />
@@ -24,11 +35,19 @@ export function Sidebar({ activeItemKey, isCollapsed, items, onClose, onSelectIt
         <button
           className="sidebar__collapse-button"
           type="button"
-          aria-label={isCollapsed ? 'Expandir menú lateral' : 'Colapsar menú lateral'}
+          aria-label={
+            isCollapsed ? "Expandir menú lateral" : "Colapsar menú lateral"
+          }
           aria-pressed={isCollapsed}
           onClick={onToggleCollapse}
         >
-          <MaterialIcon name={isCollapsed ? 'keyboard_double_arrow_right' : 'keyboard_double_arrow_left'} />
+          <MaterialIcon
+            name={
+              isCollapsed
+                ? "keyboard_double_arrow_right"
+                : "keyboard_double_arrow_left"
+            }
+          />
         </button>
       </div>
 
@@ -37,27 +56,28 @@ export function Sidebar({ activeItemKey, isCollapsed, items, onClose, onSelectIt
           const isActive = activeItemKey === item.key;
 
           return (
-            <button
-              className={`nav-item${isActive ? ' is-active' : ''}`}
-              type="button"
+            <AppLink
+              className={`nav-item${isActive ? " is-active" : ""}`}
+              to={item.path}
               data-page={item.key}
-              aria-current={isActive ? 'page' : undefined}
+              aria-current={isActive ? "page" : undefined}
               title={item.label}
               key={item.key}
-              onClick={() => {
-                onSelectItem(item);
-                onClose();
-              }}
+              onClick={onClose}
             >
               <MaterialIcon name={item.icon} />
               <span className="nav-item__label">{item.label}</span>
-            </button>
+            </AppLink>
           );
         })}
       </nav>
 
       <div className="sidebar__footer">
-        <button className="nav-item nav-item--muted" type="button" title="Ayuda">
+        <button
+          className="nav-item nav-item--muted"
+          type="button"
+          title="Ayuda"
+        >
           <MaterialIcon name="help" />
           <span className="nav-item__label">Ayuda</span>
         </button>
